@@ -49,15 +49,15 @@ module.exports = {
             outputFilename: 'kvs-webrtc.LICENSE',
             addBanner: true,
             renderBanner: () => fs.readFileSync('./license/bundleLicenseBanner.txt', { encoding: 'utf-8' }).replace('VERSION', version),
-            renderLicenses: modules => {
+            renderLicenses: (modules) => {
                 let text = fs.readFileSync('./license/bundleLicenseHeader.txt', { encoding: 'utf-8' });
-                modules.forEach(module => {
+                modules.forEach((module) => {
                     text += '\n';
                     text += `This product bundles ${module.name}, which is available under the ${module.licenseId} license:\n`;
                     text += '\n';
                     text += module.licenseText
                         .split('\n')
-                        .map(line => `  ${line}\n`)
+                        .map((line) => `  ${line}\n`)
                         .join('');
                 });
                 return text;
